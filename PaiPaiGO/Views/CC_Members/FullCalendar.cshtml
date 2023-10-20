@@ -1,0 +1,91 @@
+﻿@model PaiPaiGO.Models.Mission
+@using Newtonsoft.Json
+@using Newtonsoft.Json.Linq;
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="~/js/moment.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
+
+
+<script>
+
+	@{
+		// 合併兩個JSON物件
+		var orderEvent = ViewBag.OrderEventList;
+		var AccepEvent = ViewBag.AcceptEventList;
+
+		var orderjson = Newtonsoft.Json.JsonConvert.SerializeObject(orderEvent);
+		var Accepjson = Newtonsoft.Json.JsonConvert.SerializeObject(AccepEvent);
+
+		var jsonObject1 = JArray.Parse(orderjson);
+		var jsonObject2 = JArray.Parse(Accepjson);
+		jsonObject1.Merge(jsonObject2);
+		string mergedJson = jsonObject1.ToString();
+	}
+	// 將資料指派給 JavaScript 變數
+	var EventList = @Html.Raw(mergedJson);
+
+	document.addEventListener('DOMContentLoaded', function () {
+		var calendarEl = document.getElementById('calendar');
+		var calendar = new FullCalendar.Calendar(calendarEl, {
+			initialView: 'dayGridMonth',
+			timeZone: 'Asia/Taipei',
+			events: EventList,
+			slotEventOverlap: true,
+			fixedWeekCount: false,
+			contentHeight: 500,
+			displayEventTime: false,
+			//點擊事件後的操作連結到詳細頁面
+			eventClick: function (info) {
+				var eventId = (info.event.id);				
+				window.location.href = "/HS_Get_Text/GetOrder_Pai/" + eventId;
+			}
+		});
+		calendar.render({
+		});
+	});
+
+</script>
+
+<h1>FullCalendar</h1>
+<div class="row">
+	<div class="col-md-1 col-sm-12"></div>
+	<div class="col-md-10 col-sm-12">
+		<div id='calendar'></div>
+	</div>
+	<div class="col-md-1 col-sm-12"></div>
+</div>
+
+
+
+
+
+<style>
+	#calendar {
+		background: white;
+		color: black;
+	}
+	.fc-daygrid-day-number,
+	.fc-col-header-cell-cushion {
+		color: black;
+		text-decoration: none;
+		font-size: 20px;
+	}
+	.fc-event-title {
+		color: black;
+		font-size: 20px;
+	}
+	.fc-day-grid-event .fc-daygrid-day {
+		height: 10px;
+	}
+	.fc-toolbar-chunk {
+		font-size: 20px;
+	}
+</style>
+
+
+
+
+
+
+
+

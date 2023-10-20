@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\js\moment.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\HS_Get_Text\GetOrder_Buy.cshtml" />
+    <None Include="Views\HS_Get_Text\GetOrder_Pai.cshtml" />
+    <None Include="Views\HS_Get_Text\Text_Buy.cshtml" />
+    <None Include="Views\HS_Get_Text\Text_Pai.cshtml" />
+    <None Include="Views\HS_Pending\CheckOrder_Buy.cshtml" />
+    <None Include="Views\HS_Pending\CheckOrder_Pai.cshtml" />
+    <None Include="Views\HS_Pending\PendingOrder_Buy.cshtml" />
+    <None Include="Views\HS_Pending\PendingOrder_Pai.cshtml" />
+    <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Views\WS_AdmMembers\AdmMember.cshtml" />
+    <None Include="Views\WS_AdmMembers\_MemberListPartial.cshtml" />
+    <None Include="Views\WS_AdmMembers\_OpinionPartial.cshtml" />
+    <None Include="Views\WS_AdmMissions\WS_AdmMission.cshtml" />
+    <None Include="Views\WS_AdmMissions\_MissionTable.cshtml" />
+    <None Include="Views\WS_Opinions\AdmOpinion.cshtml" />
+    <None Include="Views\WS_Opinions\_OpinionWarn.cshtml" />
+    <None Include="Views\Yu_Calendar\Index.cshtml" />
+    <None Include="Views\Yu_Calendar\Yu_Calendar.cshtml" />
+    <None Include="Views\Yu_Calendar\Yu_Star.cshtml" />
+    <None Include="Views\YU_Home\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="7.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="NuGet.Common" Version="6.7.0" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="8.4.7" />
+  </ItemGroup>
+
+</Project>

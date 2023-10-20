@@ -1,0 +1,254 @@
+﻿@model IEnumerable< PaiPaiGO.Models.Mission>
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@using Newtonsoft.Json
+@using Newtonsoft.Json.Linq;
+
+<!--SweetAlert2-->
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<!--jquery-->
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+
+<!--標籤卡樣式-->
+<style>
+	.nav-tabs .nav-link {
+		border: 0px solid transparent;
+		color: #495057;
+	}
+
+	.table-guest {
+		--bs-table-color: #000;
+		--bs-table-bg: #AFD9E4;
+		--bs-table-border-color: white;
+		--bs-table-striped-bg: #c5e8ef;
+		--bs-table-striped-color: #000;
+		--bs-table-active-bg: #badce3;
+		--bs-table-active-color: #000;
+		--bs-table-hover-bg: #bfe2e9;
+		--bs-table-hover-color: #000;
+		color: var(--bs-table-color);
+		border-color: var(--bs-table-border-color)
+	}
+
+	.table-toolman {
+		--bs-table-color: #000;
+		--bs-table-bg: #ABD9C5;
+		--bs-table-border-color: white;
+		--bs-table-striped-bg: #c5e8ef;
+		--bs-table-striped-color: #000;
+		--bs-table-active-bg: #badce3;
+		--bs-table-active-color: #000;
+		--bs-table-hover-bg: #bfe2e9;
+		--bs-table-hover-color: #000;
+		color: var(--bs-table-color);
+		border-color: var(--bs-table-border-color)
+	}
+</style>
+
+
+<!--行事曆RenderPartial-->
+@{
+	Html.RenderPartial("_Fullcalender");
+}
+
+
+<!-- 調整版面用的空行 -->
+<br />
+<br />
+
+<hr />
+
+<br />
+<br />
+
+<!-- 歷史表單 -->
+
+
+<div class="row fs-3">
+	<div class="col-md-1 col-sm-12 "></div>
+	<div class="col-md-10 col-sm-12 bg-info-subtle ">
+		<br />
+		<!--標籤卡-->
+		<!-- 參考： https://getbootstrap.com/docs/5.3/components/navs-tabs/#javascript-behavior-->
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+			<li class="nav-item" role="presentation">
+				<button class="nav-link text-secondary-emphasis active" id="guest-tab" data-bs-toggle="tab"
+						data-bs-target="#guest-tab-pane" type="button" role="tab" aria-controls="guest-tab-pane"
+						aria-selected="true" style="background-color: #8CC7D6;">
+					我的發布紀錄
+				</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link text-secondary-emphasis" id="toolman-tab" data-bs-toggle="tab"
+						data-bs-target="#toolman-tab-pane" type="button" role="tab" aria-controls="toolman-tab-pane"
+						aria-selected="false" style="background-color: #88c6AB; margin-left: 5px;">
+					我的接案紀錄
+				</button>
+			</li>
+
+		</ul>
+		@*錯誤訊息: @Html.ValidationSummary()*@
+
+
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" id="guest-tab-pane" role="tabpanel" aria-labelledby="guest-tab"
+				 tabindex="0" style="background-color: #8CC7D6;">
+
+
+				<!--任務狀態篩選-->
+				<div class="dropdown text-end">
+					<br>
+					<select class="btn btn-secondary btn-lg dropdown-toggle" id="myDropdown_order" style="margin-right: 30px;">
+						<option disabled selected value="選擇全部" style="display:none">任務狀態</option>
+						@foreach (var item in ViewBag.MissionStatus_Droplist) {
+							if (@item != "等待接案人完成任務" && @item != "等待發布人完成任務") {
+								<option class="dropdown-item" style="background-color:white; color:black" value="@item">@item</option>
+							}
+						}
+
+
+					</select>
+				</div>
+
+				<!-- 發布表單 -->
+				<div class=" desktop-table" style="display: block; margin: 20px; ">
+
+					@{
+						Html.RenderPartial("_OrderTable");
+					}
+					<br />
+				</div>
+			</div>
+
+			<!--接案-->
+			<div class="tab-pane fade" id="toolman-tab-pane" role="tabpanel" aria-labelledby="toolman-tab"
+				 tabindex="0" style="background-color: #88c6AB; ">
+
+
+				<!--任務狀態篩選-->
+				<div class="  text-end">
+					<br>
+					<select class="btn btn-secondary btn-lg dropdown-toggle" id="myDropdown_Accept" style="margin-right: 30px;">
+						<option disabled selected value="選擇全部" style="display:none">任務狀態</option>
+						@foreach (var item in ViewBag.MissionStatus_Droplist) {
+							if (@item != "等待接案人完成任務" && @item != "等待發布人完成任務") {
+								<option class="dropdown-item" style="background-color:white; color:black" value="@item">@item</option>
+							}
+						}
+					</select>
+
+				</div>
+
+				<!-- 接案表單 -->
+				<div class=" desktop-table" style="display: block; margin: 20px; ">
+					@{
+						Html.RenderPartial("_AcceptTable");
+					}
+					<br />
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<br />
+
+<script>
+	//篩選(發布)
+	$(document).ready(function () {
+		// 获取下拉选择框的当前值
+		var selectedStatus = $('#myDropdown_order').val();
+
+		// 发送Ajax请求以执行初始筛选操作
+		$.ajax({
+			url: '/Yu_Calendar/Filter_Order',
+			type: 'POST',
+			data: { missionStatus: selectedStatus },
+			success: function (result) {
+				$('#OrderTable').html(result);
+			}
+		});
+	});
+
+	$(document).ready(function () {
+		$('#myDropdown_order').change(function () {
+			var selectedStatus = $(this).val();
+			$.ajax({
+				url: '/Yu_Calendar/Filter_Order',
+				type: 'POST',
+				data: { missionStatus: selectedStatus },
+				success: function (result) {
+					$('#OrderTable').html(result);
+				},
+				error: function () {
+					console.error('AJAX請求失敗');
+				}
+			});
+		});
+	});
+
+
+	//篩選(接單)
+	$(document).ready(function () {
+		// 获取下拉选择框的当前值
+		var selectedStatus = $('#myDropdown_Accept').val();
+
+		// 发送Ajax请求以执行初始筛选操作
+		$.ajax({
+			url: '/Yu_Calendar/Filter_Accept',
+			type: 'POST',
+			data: { missionStatus: selectedStatus },
+			success: function (result) {
+				$('#AcceptTable').html(result);
+			}
+		});
+	});
+
+	$(document).ready(function () {
+		$('#myDropdown_Accept').change(function () {
+			var selectedStatus = $(this).val();
+			$.ajax({
+				url: '/Yu_Calendar/Filter_Accept',
+				type: 'POST',
+				data: { missionStatus: selectedStatus },
+				success: function (result) {
+					$('#AcceptTable').html(result);
+				},
+				error: function () {
+					console.error('AJAX請求失敗');
+				}
+			});
+		});
+	});
+
+
+</script>
+
+<script>
+	$(document).ready(function () {
+		// 检查本地存储中是否有选项卡标识
+		var activeTab = localStorage.getItem('activeTab');
+
+		// 如果有，将页面定位到该选项卡
+		if (activeTab) {
+			$('.nav-link[data-bs-target="' + activeTab + '"]').tab('show');
+		}
+
+		// 监听选项卡切换事件，以便在切换时更新本地存储
+		$('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+			var target = $(e.target).data('bs-target');
+			localStorage.setItem('activeTab', target);
+		});
+	});
+</script>

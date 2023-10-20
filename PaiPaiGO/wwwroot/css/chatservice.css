@@ -1,0 +1,209 @@
+﻿.icon-bar {
+position: fixed;
+top: 100%;
+right: 20px;
+/* -webkit-transform: translateY(-50%);
+-ms-transform: translateY(-50%);
+transform: translateY(-50%); */
+}
+
+/* 時間的基本設定 */
+.timee {
+background-color: rgb(33, 177, 177);
+color: white;
+padding: 10px 18px;
+border: none;
+cursor: pointer;
+opacity: 0.8;
+position: fixed;
+bottom: 80px;
+right: 25px;
+width: 80px;
+/* border-radius: 20px; */
+}
+
+
+#countdown-icon:hover {
+background-color: aqua;
+}
+
+
+/*為打開聊天室窗的按鈕，設定位置*/
+.open-button {
+background-color: #04AA6D;
+color: white;
+padding: 10px 18px;
+border: none;
+cursor: pointer;
+opacity: 0.8;
+position: fixed;
+bottom: 10px;
+right: 25px;
+width: 80px;
+/* border-radius: 10px; */
+}
+
+
+/* 彈出聊天室窗，一開始設定隱藏 */
+.chat-popup {
+display: none;
+position: fixed;
+max-width: 350px;
+bottom: 5em;
+right: 15px;
+border: 3px solid #f1f1f1;
+z-index: 9;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 將樣式加入容器中 */
+.form-container {
+max-width: 300px;
+padding: 10px;
+background-color: white;
+}
+
+/* 輸入的區塊 */
+.form-container textarea {
+width: 100%;
+padding: 15px;
+margin: 5px 0 22px 0;
+border: none;
+background: #f1f1f1;
+resize: none;
+min-height: 200px;
+}
+
+/* 當文本區域獲得焦點時，執行某些操作 */
+.form-container textarea:focus {
+background-color: #ddd;
+outline: none;
+}
+
+/* 設置提交/發送按鈕的樣式 */
+.form-container .btn1 {
+background-color: #04AA6D;
+color: white;
+padding: 16px 20px;
+border: none;
+cursor: pointer;
+width: 100%;
+margin-bottom: 10px;
+opacity: 0.8;
+}
+
+/* 為取消按鈕添加紅色背景色 */
+.form-container .cancel {
+background-color: red;
+padding: 16px 20px;
+}
+
+/* 為按鈕添加一些懸停效果*/
+.form-container .btn1:hover, .open-button:hover {
+opacity: 1;
+}
+/*時間的對話*/
+.chat-popups {
+display: none;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+border: 3px solid #f1f1f1;
+z-index: 9;
+}
+.btn1.cancels {
+background-color: brown;
+padding: 6px 10px;
+width: 40%;
+}
+
+
+#timePopup {
+display: none;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+padding: 20px;
+background-color: red;
+color: whitesmoke;
+border-radius: 18px;
+border: 1px solid #ccc;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+z-index: 1000;
+}
+
+
+.notification-popup {
+display: none;
+position: fixed;
+bottom: 22em;
+right: 28em;
+background-color: #f1f1f1;
+border: 1px solid #ddd;
+padding: 20px;
+z-index: 1;
+}
+
+.notification-popup #notificationContent {
+font-size: 20px; /* 調整字體大小 */
+margin: 0; /* 清除預設的 margin */
+}
+.notification-popup .close {
+color: #000;
+float: right;
+font-size: 20px;
+font-weight: bold;
+cursor: pointer;
+}
+
+.notification-popup .close:hover {
+color: #f00;
+}
+
+/*通知*/
+.dropbtn {
+color: white;
+padding: 20%;
+font-size: 16px;
+border: none;
+cursor: pointer;
+}
+
+/*.dropbtn:hover, .dropbtn:focus {
+background-color: #2980B9;
+}*/
+
+/*.dropdown {
+position: relative;
+display: inline-block;
+}*/
+
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #f1f1f1;
+min-width: 240px;
+overflow: auto;
+box-shadow: 0em 10em 18em 0em rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+.dropdown-content a {
+color: black;
+padding: 18px 22px;
+font-size:18px;
+text-decoration: none;
+display: block;
+}
+
+/*.dropdown a:hover {
+background-color: #ddd;
+}*/
+
+.show {
+display: block;
+}
+
+

@@ -1,0 +1,181 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = PaiPaiGO
+build_property.RootNamespace = PaiPaiGO
+build_property.ProjectDir = C:\程式語言\大專\MVC\HS\PaiPaiGO\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\程式語言\大專\MVC\HS\PaiPaiGO
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/CC_Members/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ0NfTWVtYmVyc1xGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/CC_Members/FullCalendar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ0NfTWVtYmVyc1xGdWxsQ2FsZW5kYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/CC_Members/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ0NfTWVtYmVyc1xMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/CC_Members/MemberProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ0NfTWVtYmVyc1xNZW1iZXJQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/CC_Members/Resgister.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ0NfTWVtYmVyc1xSZXNnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/CC_Members/SetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ0NfTWVtYmVyc1xTZXRQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/Home/_RemainingTimePartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfUmVtYWluaW5nVGltZVBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/HS_Get_Text/GetOrder_Buy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFNfR2V0X1RleHRcR2V0T3JkZXJfQnV5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/HS_Get_Text/GetOrder_Pai.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFNfR2V0X1RleHRcR2V0T3JkZXJfUGFpLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/HS_Get_Text/Text_Buy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFNfR2V0X1RleHRcVGV4dF9CdXkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/HS_Get_Text/Text_Pai.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFNfR2V0X1RleHRcVGV4dF9QYWkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/HS_Pending/CheckOrder_Buy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFNfUGVuZGluZ1xDaGVja09yZGVyX0J1eS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/HS_Pending/CheckOrder_Pai.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFNfUGVuZGluZ1xDaGVja09yZGVyX1BhaS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/HS_Pending/PendingOrder_Buy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFNfUGVuZGluZ1xQZW5kaW5nT3JkZXJfQnV5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/HS_Pending/PendingOrder_Pai.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFNfUGVuZGluZ1xQZW5kaW5nT3JkZXJfUGFpLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/HS_Problem/CommonProblem.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFNfUHJvYmxlbVxDb21tb25Qcm9ibGVtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/HS_Problem/Explain.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFNfUHJvYmxlbVxFeHBsYWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/WS_AdmMembers/AdmMember.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV1NfQWRtTWVtYmVyc1xBZG1NZW1iZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/WS_AdmMembers/_MemberListPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV1NfQWRtTWVtYmVyc1xfTWVtYmVyTGlzdFBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/WS_AdmMembers/_OpinionPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV1NfQWRtTWVtYmVyc1xfT3BpbmlvblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/WS_AdmMissions/WS_AdmMission.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV1NfQWRtTWlzc2lvbnNcV1NfQWRtTWlzc2lvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/WS_AdmMissions/_MissionTable.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV1NfQWRtTWlzc2lvbnNcX01pc3Npb25UYWJsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/WS_Opinions/AdmOpinion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV1NfT3BpbmlvbnNcQWRtT3Bpbmlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/WS_Opinions/_OpinionWarn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV1NfT3BpbmlvbnNcX09waW5pb25XYXJuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/YH_CasePages/YH_CasePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWUhfQ2FzZVBhZ2VzXFlIX0Nhc2VQYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/Yu_Calendar/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWXVfQ2FsZW5kYXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/Yu_Calendar/Yu_Calendar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWXVfQ2FsZW5kYXJcWXVfQ2FsZW5kYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/Yu_Calendar/Yu_Report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWXVfQ2FsZW5kYXJcWXVfUmVwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/Yu_Calendar/Yu_Star.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWXVfQ2FsZW5kYXJcWXVfU3Rhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/Yu_Calendar/_AcceptTable.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWXVfQ2FsZW5kYXJcX0FjY2VwdFRhYmxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/Yu_Calendar/_Fullcalender.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWXVfQ2FsZW5kYXJcX0Z1bGxjYWxlbmRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/Yu_Calendar/_OrderTable.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWXVfQ2FsZW5kYXJcX09yZGVyVGFibGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/YU_Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWVVfSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/YU_Members/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWVVfTWVtYmVyc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/程式語言/大專/MVC/HS/PaiPaiGO/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-q93hix0imj

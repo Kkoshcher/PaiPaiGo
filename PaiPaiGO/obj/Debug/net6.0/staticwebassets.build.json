@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lFZenKWrUxrj0CeKzTX9C8YNHdfk7YCL+24DJBbSqvg=",
+  "Hash": "s5I4d3bzZFxU6F3HgxqQDVdnq4Xo1ZctDykEUz3swy4=",
   "Source": "PaiPaiGO",
   "BasePath": "_content/PaiPaiGO",
   "Mode": "Default",
@@ -440,6 +440,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\Home4.gif"
+    },
+    {
+      "Identity": "C:\\程式語言\\大專\\MVC\\HS\\PaiPaiGO\\wwwroot\\img\\humanWalking-unscreen.gif",
+      "SourceId": "PaiPaiGO",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\程式語言\\大專\\MVC\\HS\\PaiPaiGO\\wwwroot\\",
+      "BasePath": "_content/PaiPaiGO",
+      "RelativePath": "img/humanWalking-unscreen.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\humanWalking-unscreen.gif"
     },
     {
       "Identity": "C:\\程式語言\\大專\\MVC\\HS\\PaiPaiGO\\wwwroot\\img\\IG.png",

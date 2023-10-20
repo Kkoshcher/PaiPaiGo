@@ -106,36 +106,46 @@
                                     <option value="日用品">日用品</option>
                                 </select>
                             </div>
-                            <div class="col" style="letter-spacing: 1px;">
-                                <label for="BuyName" class="form-label me-2">名稱:</label>
-                                <input type="text" class="form-control" name="BuyName" id="BuyName" style="max-width: 400px;">
-                                <span class="iconicfill-pen-alt2">&#9998;</span>
+                            <div class="col">
+                                <div class="wrap-label">
+                                    <label for="BuyName" class="form-label me-2">名稱:</label>
+                                    <input type="text" class="form-control" name="BuyName" id="BuyName" style="max-width: 400px;">
+                                    <span class="iconicfill-pen-alt2">&#9998;</span>
+                                </div>
                             </div>
                         </div>
                         <!-- 金額 input -->
                         <div class="row g-3 align-items-center">
-                            <div class="col" style="letter-spacing: 1px;">
-                                <label for="BuyLocation" class="form-label me-2">任務執行地點:</label>
-                                <input type="text" class="form-control" name="BuyLocation" id="BuyLocation" style="max-width: 400px;">
-                                <span class="iconicfill-pen-alt2">&#9998;</span>
+                            <div class="col">
+                                <div class="wrap-label">
+                                    <label for="BuyLocation" class="form-label me-2" style="letter-spacing: 1px;">任務執行地點:</label>
+                                    <input type="text" class="form-control" name="BuyLocation" id="BuyLocation" style="max-width: 400px;">
+                                    <span class="iconicfill-pen-alt2">&#9998;</span>
+                                </div>
                             </div>
                             <div class="col">
-                                <label for="BuyAmount" class="form-label me-2">金額:</label>
-                                <input type="text" class="form-control" name="BuyAmount" id="BuyAmount" style="max-width: 400px;">
-                                <span class="iconicfill-pen-alt2">&#9998;</span>
+                                <div class="wrap-label">
+                                    <label for="BuyAmount" class="form-label me-2">金額:</label>
+                                    <input type="text" class="form-control" name="BuyAmount" id="BuyAmount" style="max-width: 400px;">
+                                    <span class="iconicfill-pen-alt2">&#9998;</span>
+                                </div>
                             </div>
                         </div>
                         <!-- 交貨時間時間格式的 input -->
                         <div class="row g-3 align-items-center">
                             <div class="col">
-                                <label for="BuyDelivery" class="form-label me-2">交貨時間:</label>
-                                <input type="datetime-local" class="form-control" name="BuyDelivery" id="BuyDelivery" style="max-width: 400px;">
-                                <span class="iconicfill-pen-alt2">&#9998;</span>
+                                <div class="wrap-label">
+                                    <label for="BuyDelivery" class="form-label me-2">交貨時間:</label>
+                                    <input type="datetime-local" class="form-control" name="BuyDelivery" id="BuyDelivery" style="max-width: 400px;">
+                                    <span class="iconicfill-pen-alt2">&#9998;</span>
+                                </div>
                             </div>
                             <div class="col">
-                                <label for="BuyDeadline" class="form-label me-2">任務截止時間:</label>
-                                <input type="datetime-local" class="form-control" name="BuyDeadline" id="BuyDeadline" style="max-width: 400px;">
-                                <span class="iconicfill-pen-alt2">&#9998;</span>
+                                <div class="wrap-label">
+                                    <label for="BuyDeadline" class="form-label me-2">任務截止時間:</label>
+                                    <input type="datetime-local" class="form-control" name="BuyDeadline" id="BuyDeadline" style="max-width: 400px;">
+                                    <span class="iconicfill-pen-alt2">&#9998;</span>
+                                </div>
                             </div>
                         </div>
                         <br />
@@ -151,36 +161,44 @@
                         <br />
                         <!-- 交貨地址詳細地址 input -->
                         <div class="row g-3 align-items-center">
-                            <div class="col" style="letter-spacing: 1px;">
-                                <label for="BuyAddress" class="form-label me-2">詳細地址:</label>
-                                <input type="text" class="form-control" name="BuyAddress" id="BuyAddress" placeholder="請輸入詳細地址">
-                                <span class="iconicfill-pen-alt2">&#9998;</span>
+                            <div class="col">
+                                <div class="wrap-label">
+                                    <label for="BuyAddress" class="form-label me-2" style="letter-spacing: 1px;">詳細地址:</label>
+                                    <input type="text" class="form-control" name="BuyAddress" id="BuyAddress" placeholder="請輸入詳細地址">
+                                    <span class="iconicfill-pen-alt2">&#9998;</span>
+                                </div>
                             </div>
                         </div>
                         <!-- 收貨方式 select 和 -->
                         <div class="row g-3 align-items-center">
-                            <div class="col" style="letter-spacing: 1px;">
-                                <label for="BuyDeliveryMethod" class="form-label me-2">收貨方式:</label>
-                                <select class="form-select" name="BuyDeliveryMethod" id="BuyDeliveryMethod" style="max-width:400px">
-                                    <option value="面交">面交</option>
-                                    <option value="管理員代收">管理員代收</option>
-                                </select>
+                            <div class="col">
+                                <div class="wrap-label">
+                                    <label for="BuyDeliveryMethod" class="form-label me-2" style="letter-spacing: 1px;">收貨方式:</label>
+                                    <select class="form-select" name="BuyDeliveryMethod" id="BuyDeliveryMethod" style="max-width:400px">
+                                        <option value="面交">面交</option>
+                                        <option value="管理員代收">管理員代收</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <!-- 任務內容和圖片上傳 -->
                         <div class="row g-3 align-items-center">
-                            <div class="col" style="letter-spacing: 1px;">
-                                <label for="BuyTaskContent" class="form-label me-2" style="font-size: 25px;">任務內容:</label>
-                                <textarea class="form-control" rows="5" placeholder="任務內容..." name="BuyTaskContent" id="BuyTaskContent" style="font-size: 20px;"></textarea>
-                                <span class="iconicfill-pen-alt2">&#9998;</span>
+                            <div class="col">
+                                <div class="wrap-label">
+                                    <label for="BuyTaskContent" class="form-label me-2" style="font-size: 25px;">任務內容:</label>
+                                    <textarea class="form-control" rows="5" placeholder="任務內容..." name="BuyTaskContent" id="BuyTaskContent" style="font-size: 20px;"></textarea>
+                                    <span class="iconicfill-pen-alt2">&#9998;</span>
+                                </div>
                             </div>
                         </div>
                         <div class="row g-3 align-items-center">
                             <div class="row g-3 align-items-center">
                                 <div class="col">
-                                    <label for="imageInput" class="btn btn-secondary mt-2">上傳圖片</label>
-                                    <input type="file" class="image-upload" id="imageInput" accept="image/*" multiple onchange="previewImages(this, 'buy_uploaded_images')">
-                                    <input type="hidden" id="base64Image" name="BuyImage" />
+                                    <div class="wrap-label">
+                                        <label for="imageInput" class="btn btn-secondary mt-2">上傳圖片</label>
+                                        <input type="file" class="image-upload" id="imageInput" accept="image/*" multiple onchange="previewImages(this, 'buy_uploaded_images')">
+                                        <input type="hidden" id="base64Image" name="BuyImage" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -190,7 +208,9 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-end mt-3">
-                        <input type="button" value="下一步" id="next-button" class="btn btn-primary mt-3" style="background-color: #4B3DE7;">
+                        <div class="wrap-label">
+                            <input type="button" value="下一步" id="next-button" class="btn btn-primary mt-3" style="background-color: #4B3DE7;">
+                        </div>
                     </div>
                     <div style="height:50px"></div>
                 </div>
@@ -198,6 +218,7 @@
             <div class="col-md-1"></div>
         </div>
     </form>
+
 
     <script>
 

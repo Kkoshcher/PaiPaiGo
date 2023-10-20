@@ -11,6 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Privacy.cshtml" />
+    <None Include="Views\Home\_RemainingTimePartial.cshtml" />
     <None Include="Views\HS_Get_Text\GetOrder_Buy.cshtml" />
     <None Include="Views\HS_Get_Text\GetOrder_Pai.cshtml" />
     <None Include="Views\HS_Get_Text\Text_Buy.cshtml" />
@@ -29,6 +32,7 @@
     <None Include="Views\WS_AdmMissions\_MissionTable.cshtml" />
     <None Include="Views\WS_Opinions\AdmOpinion.cshtml" />
     <None Include="Views\WS_Opinions\_OpinionWarn.cshtml" />
+    <None Include="Views\YH_CasePages\YH_CasePage.cshtml" />
     <None Include="Views\Yu_Calendar\Index.cshtml" />
     <None Include="Views\Yu_Calendar\Yu_Calendar.cshtml" />
     <None Include="Views\Yu_Calendar\Yu_Star.cshtml" />

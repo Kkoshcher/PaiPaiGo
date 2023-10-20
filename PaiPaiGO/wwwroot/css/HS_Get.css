@@ -1,0 +1,50 @@
+﻿@import "compass/css3";
+
+button.colins-submit {
+    background: transparent;
+    border: none;
+    &:focus
+
+{
+    outline: none;
+}
+
+&::-moz-focus-inner {
+    border: 0;
+}
+
+svg {
+    text
+
+{
+    font-family: 'Montserrat', sans-serif;
+    &.textNode
+
+{
+    fill: #4B3DE7;
+}
+
+}
+
+rect {
+    &.btn-shape
+
+{
+    &.btn-bg
+
+{
+    stroke: #4B3DE7;
+    fill: #ffffff;
+}
+
+&.btn-color {
+    stroke: #4B3DE7;
+    fill: #ffffff;
+    stroke-dasharray: 453;
+    stroke-dashoffset: 453;
+}
+
+}
+}
+}
+}

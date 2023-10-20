@@ -158,23 +158,25 @@
                                         <span class="iconicfill-pen-alt2">&#9998;</span>
 
                                     </div>
-                                    <li class="list-group-item" style="font-size: 25px;letter-spacing: 1px;">
+                                    <li class="list-group-item" style="font-size: 25px;letter-spacing: 1px;padding-bottom: 50px;">
                                         <div class="form-group">
-                                            <label for="TaskContent">任務內容:</label>
+                                            <div style="position: relative;">
+                                                <label for="TaskContent">任務內容:</label>
+                                                <span class="iconicfill-pen-alt2">&#9998;</span>
+                                            </div>
                                             <textarea class="form-control" rows="5" placeholder="請輸入詳細任務需求..." name="TaskContent"
-                                                      id="TaskContent" style="font-size: 25px;letter-spacing: 1px;height:200px"></textarea>
-                                            <span class="iconicfill-pen-alt2">&#9998;</span>
+                                                      id="TaskContent" style="font-size: 25px;letter-spacing: 1px;height:200px;"></textarea>
                                         </div>
                                     </li>
 
-                                    <li class="list-group-item">
+                                    <li class="list-group-item" style="clear:both;">
                                         <label for="imageInput" class="btn btn-secondary mt-2">上傳圖片</label>
                                         <input type="file" class="image-upload" id="imageInput" accept="image/*"
                                                multiple onchange="previewImages(this, 'uploaded-images')">
                                         <input type="hidden" id="base64Image" name="Image" />
                                     </li>
                                     <!-- 上傳的圖片列表 -->
-                                    <li class="list-group-item uploaded-images" id="uploaded-images" name="queue_images">
+                                    <li class="list-group-item uploaded-images" id="uploaded-images" name="queue_images" style="clear:both;margin-top: 20px;">
                                         <!-- 這裡會顯示上傳的圖片 -->
                                     </li>
                                 </ul>

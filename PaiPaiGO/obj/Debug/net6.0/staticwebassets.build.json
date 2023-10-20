@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "s5I4d3bzZFxU6F3HgxqQDVdnq4Xo1ZctDykEUz3swy4=",
+  "Hash": "ifIjpISzSctluByzYLEvHp3PkcRXXQJCBtXOgpMOS58=",
   "Source": "PaiPaiGO",
   "BasePath": "_content/PaiPaiGO",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\fontpage.css"
+    },
+    {
+      "Identity": "C:\\程式語言\\大專\\MVC\\HS\\PaiPaiGO\\wwwroot\\css\\HS_Get.css",
+      "SourceId": "PaiPaiGO",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\程式語言\\大專\\MVC\\HS\\PaiPaiGO\\wwwroot\\",
+      "BasePath": "_content/PaiPaiGO",
+      "RelativePath": "css/HS_Get.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\HS_Get.css"
     },
     {
       "Identity": "C:\\程式語言\\大專\\MVC\\HS\\PaiPaiGO\\wwwroot\\css\\HS_write.css",

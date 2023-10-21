@@ -1,50 +1,53 @@
-﻿@import "compass/css3";
+﻿.center-component {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 button.colins-submit {
     background: transparent;
     border: none;
-    &:focus
-
-{
-    outline: none;
+    border-radius: 50px; /* 圓角 */
 }
 
-&::-moz-focus-inner {
-    border: 0;
-}
+    button.colins-submit:focus {
+        outline: none;
+    }
 
-svg {
-    text
+    button.colins-submit::-moz-focus-inner {
+        border: 0;
+    }
 
-{
-    font-family: 'Montserrat', sans-serif;
-    &.textNode
+    button.colins-submit svg text {
+        font-family: 'Montserrat', sans-serif;
+    }
+    button.colins-submit svg rect.btn-shape.btn-bg {
+        fill: #ffffff; /* Initial fill color */
+    }
 
-{
-    fill: #4B3DE7;
-}
+        button.colins-submit svg text.textNode {
+            fill: #4B3DE7;
+        }
 
-}
+        button.colins-submit svg text.checkNode {
+            fill-opacity: 0;
+            fill: #CDF4D1;
+        }
 
-rect {
-    &.btn-shape
-
-{
-    &.btn-bg
-
-{
-    stroke: #4B3DE7;
-    fill: #ffffff;
-}
-
-&.btn-color {
-    stroke: #4B3DE7;
-    fill: #ffffff;
-    stroke-dasharray: 453;
-    stroke-dashoffset: 453;
-}
-
-}
-}
-}
-}
+    button.colins-submit svg rect.btn-shape.btn-color {
+        stroke: #4B3DE7;
+        fill: #CDF4D1;
+        stroke-dasharray: 453;
+        stroke-dashoffset: 453;
+        stroke-width: 4;
+        z-index: 2;
+    }
+    button.colins-submit svg rect.btn-shape {
+        stroke: #4B3DE7;
+        fill: #CDF4D1;
+        stroke-dasharray: 453;
+        stroke-dashoffset: 453;
+        stroke-width: 4;
+        z-index: 2;
+    }

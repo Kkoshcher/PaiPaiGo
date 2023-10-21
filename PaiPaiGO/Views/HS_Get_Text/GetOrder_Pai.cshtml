@@ -26,7 +26,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 
-    @* <link rel="stylesheet" href="~/css/HS_Get.css" asp-append-version="true" /> *@
+    <link rel="stylesheet" href="~/css/HS_Get.css" asp-append-version="true" />
 
 </head>
 <style>
@@ -153,9 +153,17 @@
                     </div>
                     <!-- 接單 -->
                     <div style="padding-left: 370px;">
-                        <button type="button" id="updateMissionButton" class="btn btn-primary mt-3" style="background-color: #4B3DE7;font-size: 25px;">接單</button>
+                        <button type="button" id="updateMissionButton" class="btn btn-primary mt-3 colins-submit" style="background-color: #4B3DE7; font-size: 25px;">
+                            <svg width="196" height="70">
+                                <!-- 僅保留一個 rect 元素 -->
+                                <rect class="btn-shape" x="3" y="2" width="190" height="64" rx="32" ry="32" />
+                                <text class="textNode" x="50%" y="43" text-anchor="middle">接單</text>
+                                <text class="checkNode" x="35" y="40">✔</text>
+                            </svg>
+                        </button>
 
-                </div>
+                    </div>
+
             </div>
             <div style="height:50px"></div>
         </div>
@@ -191,68 +199,90 @@
         </div>
 
         <script>
-            // 地圖api
-            function initialize() {
-                var mapOptions = {
-                    zoom: 15,
-                    center: { lat: 25.0173405, lng: 121.5397518 }  // 台北市的預設經緯度
-                };
-                map = new google.maps.Map(document.getElementById('map'), mapOptions);
-            }
-            function geocodeAddress() {
-                var geocoder = new google.maps.Geocoder();
-                var address = "@TempData["PaiLocationCity"]" + " " + "@TempData["PaiLocationDistrict"]";  // 這裡填入您的縣市和地區字串
-                geocoder.geocode({ 'address': address }, function (results, status) {
-                    if (status === 'OK') {
-                        map.setCenter(results[0].geometry.location);
-                        new google.maps.Marker({
-                            map: map,
-                            position: results[0].geometry.location
-                        });
-                    } else {
-                        alert('Geocode was not successful for the following reason: ' + status);
-                    }
-                });
-            }
-            window.onload = function () {
-                initialize();  // 初始化地圖
-                geocodeAddress();  // 進行地理編碼
-            };
 
-            // post-ajax
-            document.addEventListener("DOMContentLoaded", function () {
-                const updateMissionButton = document.getElementById("updateMissionButton");
-
-                updateMissionButton.addEventListener("click", function () {
-                    const missionId = document.querySelector("input[name='MissionId']").value;;
-                    const acceptMemberId = document.querySelector("input[name='AcceptMemberId']").value;
-                    const missionStatus = document.querySelector("input[name='MissionStatus']").value;
-                    const acceptTime = document.querySelector("input[name='AcceptTime']").value;
-
-                     $.ajax({
-                            url: '/HS_Get_Text/GetOrder_Pai',
-                             method: 'POST',
-                            data: {
-                            MissionId: missionId,
-                            AcceptMemberId: acceptMemberId,
-                            MissionStatus: missionStatus,
-                            AcceptTime: acceptTime
-                            },
-                            success: function (response) {
-                            if (response.success) {
-                                // Do something on success, maybe redirect to Text_Pai
-                            window.location.href = '/HS_Get_Text/Text_Pai/' + missionId;
-                            } else {
-                            alert('Failed to update mission');
-                            }
-                            },
-                            error: function (err) {
-                            alert('Error occurred');
-                            }
+                // 地圖api
+                function initialize() {
+                    var mapOptions = {
+                        zoom: 15,
+                        center: { lat: 25.0173405, lng: 121.5397518 }  // 台北市的預設經緯度
+                    };
+                    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                }
+                function geocodeAddress() {
+                    var geocoder = new google.maps.Geocoder();
+                    var address = "@TempData["PaiLocationCity"]" + " " + "@TempData["PaiLocationDistrict"]";  // 這裡填入您的縣市和地區字串
+                    geocoder.geocode({ 'address': address }, function (results, status) {
+                        if (status === 'OK') {
+                            map.setCenter(results[0].geometry.location);
+                            new google.maps.Marker({
+                                map: map,
+                                position: results[0].geometry.location
                             });
+                        } else {
+                            alert('Geocode was not successful for the following reason: ' + status);
+                        }
+                    });
+                }
+                window.onload = function () {
+                    initialize();  // 初始化地圖
+                    geocodeAddress();  // 進行地理編碼
+                };
+                document.addEventListener("DOMContentLoaded", function () {
+                    const updateMissionButton = document.getElementById("updateMissionButton");
 
+                    var tl = gsap.timeline({
+                        paused: true,
+                        onComplete: function () {
+                            const missionId = document.querySelector("input[name='MissionId']").value;
+                            const acceptMemberId = document.querySelector("input[name='AcceptMemberId']").value;
+                            const missionStatus = document.querySelector("input[name='MissionStatus']").value;
+                            const acceptTime = document.querySelector("input[name='AcceptTime']").value;
+
+                            $.ajax({
+                                url: '/HS_Get_Text/GetOrder_Pai',
+                                method: 'POST',
+                                data: {
+                                    MissionId: missionId,
+                                    AcceptMemberId: acceptMemberId,
+                                    MissionStatus: missionStatus,
+                                    AcceptTime: acceptTime
+                                },
+                                success: function (response) {
+                                    if (response.success) {
+                                        window.location.href = '/HS_Get_Text/Text_Pai/' + missionId;
+                                    } else {
+                                        alert('Failed to update mission');
+                                    }
+                                },
+                                error: function (err) {
+                                    alert('Error occurred');
+                                }
+                            });
+                        }
+                    });
+
+                    tl.to('.colins-submit svg text.textNode', { duration: 0.15, fillOpacity: 0 })
+                        .to('.colins-submit svg rect.btn-shape', {
+                            duration: 0.25,
+                            borderRadius: '50%',
+                            width: "70px",
+                            height: "70px",
+                            x: "0",
+                            y: "0"
+                        })
+                        .to('.colins-submit svg rect.btn-shape', {
+                            duration: 1.2,
+                            strokeDashoffset: 0,
+                            ease: "Quad.easeIn"
+                        })
+                        .to('.colins-submit svg rect.btn-shape', { duration: 0.3, fill: "#4B3DE7" })
+                        .to('.colins-submit svg text.checkNode', { duration: 0.3, fillOpacity: 1 });
+
+                    updateMissionButton.addEventListener("click", function () {
+                        tl.restart();
+                    });
                 });
-            });
+
 
         </script>
     </div>

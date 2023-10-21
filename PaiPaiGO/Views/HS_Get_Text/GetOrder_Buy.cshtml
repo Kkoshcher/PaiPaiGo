@@ -23,6 +23,9 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVc0hKUxRv8PWCCNNhMsf7m_ZwIoivCZg"></script>
     @* 效果 *@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
+    <link rel="stylesheet" href="~/css/HS_Get.css" asp-append-version="true" />
 
 </head>
 <style>
@@ -147,8 +150,15 @@
                     </div>
                     <!-- 接單 -->
                     <div style="padding-left: 370px;">
-                        <button type="button" id="updateMissionButton" class="btn btn-primary mt-3" style="background-color: #4B3DE7;font-size: 25px;">接單</button>
+                        <button type="button" id="updateMissionButton" class="btn btn-primary mt-3 colins-submit" style="background-color: #4B3DE7; font-size: 25px;">
+                            <svg width="196" height="70">
+                                <rect class="btn-shape" x="3" y="3" width="190" height="64" rx="32" ry="32" />
+                                <text class="textNode" x="50%" y="43" text-anchor="middle">接單</text>
+                                <text class="checkNode" x="35" y="40">✔</text>
+                            </svg>
+                        </button>
                     </div>
+
                 </div>
             </div>
             <div style="height:50px"></div>
@@ -207,36 +217,59 @@
             document.addEventListener("DOMContentLoaded", function () {
                 const updateMissionButton = document.getElementById("updateMissionButton");
 
-                updateMissionButton.addEventListener("click", function () {
-                    const missionId = document.querySelector("input[name='MissionId']").value;;
-                    const acceptMemberId = document.querySelector("input[name='AcceptMemberId']").value;
-                    const missionStatus = document.querySelector("input[name='MissionStatus']").value;
-                    const acceptTime = document.querySelector("input[name='AcceptTime']").value;
+                var tl = gsap.timeline({
+                    paused: true,
+                    onComplete: function () {
+                        const missionId = document.querySelector("input[name='MissionId']").value;
+                        const acceptMemberId = document.querySelector("input[name='AcceptMemberId']").value;
+                        const missionStatus = document.querySelector("input[name='MissionStatus']").value;
+                        const acceptTime = document.querySelector("input[name='AcceptTime']").value;
 
-                    $.ajax({
-                        url: '/HS_Get_Text/GetOrder_Buy',
-                        method: 'POST',
-                        data: {
-                            MissionId: missionId,
-                            AcceptMemberId: acceptMemberId,
-                            MissionStatus: missionStatus,
-                            AcceptTime: acceptTime
-                        },
-                        success: function (response) {
-                            if (response.success) {
-
-                                window.location.href = '/HS_Get_Text/Text_Buy/' + missionId;
-                            } else {
-                                alert('Failed to update mission');
+                        $.ajax({
+                            url: '/HS_Get_Text/GetOrder_Buy',
+                            method: 'POST',
+                            data: {
+                                MissionId: missionId,
+                                AcceptMemberId: acceptMemberId,
+                                MissionStatus: missionStatus,
+                                AcceptTime: acceptTime
+                            },
+                            success: function (response) {
+                                if (response.success) {
+                                    window.location.href = '/HS_Get_Text/Text_Buy/' + missionId;
+                                } else {
+                                    alert('Failed to update mission');
+                                }
+                            },
+                            error: function (err) {
+                                alert('Error occurred');
                             }
-                        },
-                        error: function (err) {
-                            alert('Error occurred');
-                        }
-                    });
+                        });
+                    }
+                });
 
+                tl.to('.colins-submit svg text.textNode', { duration: 0.15, fillOpacity: 0 })
+                    .to('.colins-submit svg rect.btn-shape', {
+                        duration: 0.25,
+                        borderRadius: '50%',
+                        width: "70px",
+                        height: "70px",
+                        x: "0",
+                        y: "0"
+                    })
+                    .to('.colins-submit svg rect.btn-shape', {
+                        duration: 1.2,
+                        strokeDashoffset: 0,
+                        ease: "Quad.easeIn"
+                    })
+                    .to('.colins-submit svg rect.btn-shape', { duration: 0.3, fill: "#4B3DE7" })
+                    .to('.colins-submit svg text.checkNode', { duration: 0.3, fillOpacity: 1 });
+
+                updateMissionButton.addEventListener("click", function () {
+                    tl.restart();
                 });
             });
+
 
         </script>
 

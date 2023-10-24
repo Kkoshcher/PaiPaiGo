@@ -75,7 +75,7 @@
 
 <body>
     <form method="post" id="orderForm" action="/HS_Pending/PendingOrder_Pai">
-        <div class="container mt-5">
+     
             <div class="row g-3">
                 <div class="col-md-1"></div>
                 <div class="col-md-10" style="background-color: #BCE5F6;" id="HSfont">
@@ -191,7 +191,7 @@
                 </div>
                 <div class="col-md-1"></div>
             </div>
-        </div>
+       
     
 </form>
 
@@ -209,7 +209,7 @@
             loadFormData();
         };
         function saveFormData() {
-            var formElements = document.querySelectorAll("input, select, textarea"); // 收集所有的 input, select 和 textarea 元素
+            var formElements = document.querySelectorAll("input, select, textarea"); 
             var formData = {};
 
             formElements.forEach(function (element) {
@@ -245,7 +245,7 @@
         //縣市區域下拉選單
         $("#TWAddress").twzipcode({
             "css": ["city form-control", "town form-control", "zipcode form-control"],
-            "countyName": "City", // 指定城市name
+            "countyName": "City", 
             "districtName": "Location",
             "zipcodeName": "Postcode"
         });
@@ -271,8 +271,8 @@
             var chineseCharacters = PaiNameInput.match(/[\u4e00-\u9fa5]/g);
             // 如果中文字的數量超過10個，截斷輸入
             if (chineseCharacters && chineseCharacters.length > 10) {
-                this.value = PaiNameInput.slice(0, 10);
-                showPopover("PaiName", "最多只能輸入10個字");
+                this.value = PaiNameInput.slice(0, 15);
+                showPopover("PaiName", "最多只能輸入15個字");
             }
         });
 
@@ -333,10 +333,6 @@
             // 將時間格式轉換為日期對象
             var selectedDate = new Date(value.replace(/-/g, "/"));
 
-            // if (value === "" || isNaN(selectedDate)) {
-            //     input.setCustomValidity("請輸入日期和時間");
-            //     return;
-            // }BUG
 
             if (selectedDate <= now) {
                 input.setCustomValidity("請選擇未來的日期和時間");
@@ -378,8 +374,8 @@
         QueueTimeInput.min = currentDate.toISOString().split("T")[0] + "T" + currentDate.toTimeString().split(" ")[0].substring(0, 5);
         DeadlineInput.min = currentDate.toISOString().split("T")[0] + "T" + currentDate.toTimeString().split(" ")[0].substring(0, 5);
 
-        //監聽下一步按鈕的點擊事件
-        // 自訂驗證函數
+     
+        // 自訂驗證
         function validateForm() {
             var valid = true;
             var selectedOption = document.getElementById("Orderclass").value;
@@ -488,7 +484,7 @@
             return valid;
         }
 
-        // 監聽下一步按鈕
+       
         document.getElementById("next-button").addEventListener("click", function (event) {
             if (validateForm()) {
                 saveFormData();
@@ -499,18 +495,6 @@
                 event.preventDefault();
             }
         });
-
-
-                                        // var temp = 0
-                                        // if (temp < 1) {
-                                        //     //訂單類型初始化
-                                        //     document.getElementById("Orderclass").dispatchEvent(new Event("change"));
-                                        //     temp += 1;
-                                        // }
-      
-
-
-
 
     </script>
 </body>

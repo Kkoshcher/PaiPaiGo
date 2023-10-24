@@ -63,6 +63,38 @@
             border-radius: 0 25px 25px 0; /* 控制右半圆的圆角半径 */
             transform: translateX(100%);
         }
+
+    /* 彈出視窗樣式 */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.9);
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-content {
+        width: auto; /* 自動寬度 */
+        max-height: 0; /* 初始為 0 */
+        transition: max-height 0.5s ease-out; /* 動畫效果 */
+        object-fit: contain; /* 保持寬高比 */
+    }
+
+
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #fff;
+        font-size: 40px;
+        cursor: pointer;
+    }
+
 </style>
 
 <body>
@@ -78,8 +110,34 @@
                     <h1>@TempData["PaiMissionName"]</h1>
                     <div style="color: gray;">
                         <span>發布時間:</span>
-                        <span>@TempData["PaiOrderTime"]</span>
+                        @{
+                            DateTime OrderTime;
+                            if (DateTime.TryParse(TempData["PaiOrderTime"]?.ToString(), out OrderTime)) {
+                                string OT = OrderTime.ToString("yyyy/M/d tt hh:mm");
+                                ViewBag.OT = OT;
+                            }
+                        }
+                        <span>@ViewBag.OT</span>
                     </div>
+                    <br />
+                    @{
+                        DateTime DeliveryDate;
+                        TimeSpan DeliveryTime;
+                        if (DateTime.TryParse(TempData["PaiDeliveryDate"]?.ToString(), out DeliveryDate)) {
+                            if (TimeSpan.TryParse(TempData["PaiDeliveryTime"]?.ToString(), out DeliveryTime)) {
+                                DateTime combinedDeliveryDateTime = DeliveryDate + DeliveryTime;
+
+                                string datePart = combinedDeliveryDateTime.ToString("yyyy/M/d");
+                                string timePart = combinedDeliveryDateTime.ToString("tt hh:mm");
+                                string combined = $"{datePart} {timePart}";
+
+                                ViewBag.DeliveryDateTime = combined;
+                            }
+                        }
+                    }
+                    <p class="mb-1">執行時間:<span>@ViewBag.DeliveryDateTime</span></p>
+                    <br /><br />
+
                     <!-- 任務內容 OK-->
                     <div style="position: relative; width: 700px;">
                         <div style="position: absolute; top: 50px; left: -5px;background-color: #CDF4D1; padding: 5px; height: 20px;">
@@ -104,7 +162,14 @@
                                 <!-- 在这里放置图片 -->
                                 @if (ViewBag.ImageData != null)
                                 {
-                                    <img src="@ViewBag.ImageData" alt="Uploaded Image" style="width:150px" />
+                                    <!-- 顯示的圖片 -->
+                                    <img class="clickable-image" src="@ViewBag.ImageData" alt="Uploaded Image" style="width:150px; cursor: pointer;" />
+
+                                    <!-- 彈出視窗（Modal） -->
+                                    <div id="myModal" class="modal">
+                                        <span class="close">&times;</span>
+                                        <img class="modal-content" id="img01">
+                                    </div>
                                 }
                             </div>
                         </div>
@@ -129,8 +194,8 @@
                             {
                                 DateTime combinedDateTime = DeadlineDate + DeadlineTime;
 
-                                string datePart = combinedDateTime.ToString("yyyy-MM-dd");
-                                string timePart = combinedDateTime.ToString("tt hh:mm:ss");
+                                string datePart = combinedDateTime.ToString("yyyy/M/d");
+                                string timePart = combinedDateTime.ToString("tt hh:mm");
                                 string combined = $"{datePart} {timePart}";
 
                                 ViewBag.CombinedDateTime = combined;
@@ -177,7 +242,7 @@
         @* 變化---------------------------- *@
         <div class="form-group">
             <label asp-for="AcceptMemberId" class="control-label"></label>
-            <input asp-for="AcceptMemberId" class="form-control" value="005" />
+                <input asp-for="AcceptMemberId" class="form-control" value="@ViewBag.YU_ID" />
             <span asp-validation-for="AcceptMemberId" class="text-danger"></span>
         </div>
 
@@ -186,7 +251,7 @@
         @* 改變----------------------------------- *@
         <div class="form-group">
             <label asp-for="MissionStatus" class="control-label"></label>
-            <input asp-for="MissionStatus" class="form-control" value="接單中" />
+            <input asp-for="MissionStatus" class="form-control" value="進行中" />
             <span asp-validation-for="MissionStatus" class="text-danger"></span>
         </div>
 
@@ -210,7 +275,7 @@
                 }
                 function geocodeAddress() {
                     var geocoder = new google.maps.Geocoder();
-                    var address = "@TempData["PaiLocationCity"]" + " " + "@TempData["PaiLocationDistrict"]";  // 這裡填入您的縣市和地區字串
+                    var address = "@TempData["PaiLocationCity"]" + " " + "@TempData["PaiLocationDistrict"]";  
                     geocoder.geocode({ 'address': address }, function (results, status) {
                         if (status === 'OK') {
                             map.setCenter(results[0].geometry.location);
@@ -227,6 +292,46 @@
                     initialize();  // 初始化地圖
                     geocodeAddress();  // 進行地理編碼
                 };
+
+                // model放大圖片
+                document.addEventListener("DOMContentLoaded", function () {
+                    var modal = document.getElementById("myModal");
+                    var modalImg = document.getElementById("img01");
+                    var img = document.querySelector(".clickable-image"); 
+
+                    // 點擊圖片時，顯示彈出視窗並放大圖片
+                    img.onclick = function () {
+                        modal.style.display = "flex";
+                        modalImg.src = this.src;
+                        modalImg.style.maxHeight = "0";
+                        setTimeout(function () {
+                            modalImg.style.maxHeight = "60%";
+                        }, 10);
+                    };
+
+                    var span = document.getElementsByClassName("close")[0];
+
+                    // 點擊關閉按鈕時，關閉彈出視窗
+                    span.onclick = closeImage;
+
+                    // 點擊彈出視窗以外的區域時，也關閉它
+                    window.onclick = function (event) {
+                        if (event.target === modal) {
+                            closeImage();
+                        }
+                    };
+
+                    function closeImage() {
+                        modalImg.style.maxHeight = "0";
+                        setTimeout(function () {
+                            modal.style.display = "none";
+                            modalImg.src = "";
+                        }, 510);
+                    }
+                });
+
+
+                // post_ajax
                 document.addEventListener("DOMContentLoaded", function () {
                     const updateMissionButton = document.getElementById("updateMissionButton");
 
@@ -251,7 +356,7 @@
                                     if (response.success) {
                                         window.location.href = '/HS_Get_Text/Text_Pai/' + missionId;
                                     } else {
-                                        alert('Failed to update mission');
+                                        alert('連結錯誤，找不到此任務');
                                     }
                                 },
                                 error: function (err) {

@@ -26,7 +26,6 @@ namespace PaiPaiGO.Controllers
             //layout用
             ViewBag.YU_ID = HttpContext.Session.GetString("MemberID");
             ViewBag.YU_Name = HttpContext.Session.GetString("MemberName");
-            //int ID = 2023100801;
             ViewBag.PID = id;
             var PaiData = (from x in _context.Missions
                            where x.MissionId == id
@@ -59,7 +58,7 @@ namespace PaiPaiGO.Controllers
                 TempData["PaiMissionStatus"] = PaiData.MissionStatus;
                 TempData["PaiOrderTime"] = PaiData.OrderTime;
                 TempData["PaiAcceptTime"] = PaiData.AcceptTime;
-                TempData["rePaiAcceptTime"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+                TempData["rePaiAcceptTime"] = DateTime.Now.ToString("yyyy/M/d HH:mm");
                 //圖片
                 byte[] imageBytes = null;
                 if (PaiData.ImagePath != null)
@@ -85,7 +84,6 @@ namespace PaiPaiGO.Controllers
             ViewBag.YU_ID = HttpContext.Session.GetString("MemberID");
             ViewBag.YU_Name = HttpContext.Session.GetString("MemberName");
 
-            //int ID = 2023100805;
             TempData["BID"] = id;
             var BuyData = (from x in _context.Missions
                            where x.MissionId == id
@@ -116,7 +114,7 @@ namespace PaiPaiGO.Controllers
                 TempData["BuyMissionStatus"] = BuyData.MissionStatus;
                 TempData["BuyOrderTime"] = BuyData.OrderTime;
                 TempData["BuyAcceptTime"] = BuyData.AcceptTime;
-                TempData["reBuyAcceptTime"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+                TempData["reBuyAcceptTime"] = DateTime.Now.ToString("yyyy/M/d HH:mm");
                 //圖片
                 byte[] BuyimageBytes = null;
                 if (BuyData.ImagePath != null)
@@ -149,7 +147,6 @@ namespace PaiPaiGO.Controllers
             //layout用
             ViewBag.YU_ID = HttpContext.Session.GetString("MemberID");
             ViewBag.YU_Name = HttpContext.Session.GetString("MemberName");
-            //int ID = 2023100801;
             ViewBag.PID = id;
             var PaiData = (from x in _context.Missions
                            where x.MissionId == id
@@ -181,7 +178,7 @@ namespace PaiPaiGO.Controllers
                 TempData["PaiMissionStatus"] = PaiData.MissionStatus;
                 TempData["PaiOrderTime"] = PaiData.OrderTime;
                 TempData["PaiAcceptTime"] = PaiData.AcceptTime;
-                TempData["rePaiAcceptTime"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+                TempData["rePaiAcceptTime"] = DateTime.Now.ToString("yyyy/M/d HH:mm");
                 byte[] storedImageBytes;
                 HttpContext.Session.TryGetValue("Image", out storedImageBytes);
                 if (storedImageBytes != null)
@@ -196,7 +193,6 @@ namespace PaiPaiGO.Controllers
         {            //layout用
             ViewBag.YU_ID = HttpContext.Session.GetString("MemberID");
             ViewBag.YU_Name = HttpContext.Session.GetString("MemberName");
-            //int ID = 2023100805;
             TempData["BID"] = id;
             var BuyData = (from x in _context.Missions
                            where x.MissionId == id
@@ -227,7 +223,7 @@ namespace PaiPaiGO.Controllers
                 TempData["BuyMissionStatus"] = BuyData.MissionStatus;
                 TempData["BuyOrderTime"] = BuyData.OrderTime;
                 TempData["BuyAcceptTime"] = BuyData.AcceptTime;
-                TempData["reBuyAcceptTime"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+                TempData["reBuyAcceptTime"] = DateTime.Now.ToString("yyyy/M/d HH:mm");
                 byte[] storedImageBytes;
                 HttpContext.Session.TryGetValue("BuyImage", out storedImageBytes);
                 if (storedImageBytes != null)

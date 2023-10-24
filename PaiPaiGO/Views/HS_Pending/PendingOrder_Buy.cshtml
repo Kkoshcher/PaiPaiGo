@@ -80,7 +80,7 @@
 
 <body>
     <form method="post" id="orderForm" action="/HS_Pending/PendingOrder_Buy">
-        <div class="container mt-5">
+       
             <div class="row g-3">
                 <div class="col-md-1"></div>
                 <div class="col-md-10" style="background-color: #BCE5F6;" id="HSfont">
@@ -187,7 +187,7 @@
                             <div class="col">
                                 <div class="wrap-label">
                                     <label for="BuyTaskContent" class="form-label me-2" style="font-size: 25px;">任務內容:</label>
-                                    <textarea class="form-control" rows="5" placeholder="任務內容..." name="BuyTaskContent" id="BuyTaskContent" style="font-size: 20px;"></textarea>
+                                    <textarea class="form-control" rows="5" placeholder="請輸入詳細任務需求..." name="BuyTaskContent" id="BuyTaskContent" style="font-size: 20px;"></textarea>
                                     <span class="iconicfill-pen-alt2">&#9998;</span>
                                 </div>
                             </div>
@@ -215,9 +215,10 @@
                     </div>
                     <div style="height:50px"></div>
                 </div>
+                <div class="col-md-1"></div>
             </div>
-            <div class="col-md-1"></div>
-        </div>
+            
+       
     </form>
 
 
@@ -232,15 +233,15 @@
                 temp += 1;
             }
 
-            // 然後從 Local Storage 加載資料
+            //  Local Storage 加載資料
             loadFormData();
         };
         function saveFormData() {
-            var formElements = document.querySelectorAll("input, select, textarea"); // 收集所有的 input, select 和 textarea 元素
+            var formElements = document.querySelectorAll("input, select, textarea"); 
             var formData = {};
 
             formElements.forEach(function (element) {
-                if (element.name) { // 檢查元素是否有 'name' 屬性，這對於保存數據是必需的
+                if (element.name) { // 檢查元素是否有 'name' 屬性
                     formData[element.name] = element.value; // 保存每個元素的值
                 }
             });
@@ -296,8 +297,8 @@
             var chineseCharacters = BuyNameInput.match(/[\u4e00-\u9fa5]/g);
             // 如果中文字的數量超過10個，截斷輸入
             if (chineseCharacters && chineseCharacters.length > 10) {
-                this.value = BuyNameInput.slice(0, 10);
-                showPopover("BuyName", "最多只能輸入10個字");
+                this.value = BuyNameInput.slice(0, 15);
+                showPopover("BuyName", "最多只能輸入15個字");
             }
         });
 
@@ -357,10 +358,6 @@
             // 將時間格式轉換為日期對象
             var selectedDate = new Date(value.replace(/-/g, "/"));
 
-            // if (value === "" || isNaN(selectedDate)) {
-            //     input.setCustomValidity("請輸入日期和時間");
-            //     return;
-            // }BUG
 
             if (selectedDate <= now) {
                 input.setCustomValidity("請選擇未來的日期和時間");
@@ -526,7 +523,7 @@
             return valid;
         }
 
-        // 監聽下一步按鈕
+   
         document.getElementById("next-button").addEventListener("click", function (event) {
             if (validateBuyForm()) {
                 saveFormData();

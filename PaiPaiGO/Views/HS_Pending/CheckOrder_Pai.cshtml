@@ -61,12 +61,24 @@
                     <div class="col-md-1"></div>
                     <!-- 左側內容 -->
                     <div class="col-md-4">
+                        @{
+                            DateTime QueueDate;
+                            DateTime Deadline;
+                            if (DateTime.TryParse(TempData["QueueDate"]?.ToString(), out QueueDate)) {
+                                string PDD = QueueDate.ToString("yyyy/M/d tt hh:mm");
+                                ViewBag.PDD = PDD;
+                            };
+                            if (DateTime.TryParse(TempData["Deadline"]?.ToString(), out Deadline)) {
+                                string PD = Deadline.ToString("yyyy/M/d tt hh:mm");
+                                ViewBag.PD = PD;
+                            }
+                        }
                         <p><strong>任務種類:</strong><span>排隊</span></p>
                         <p><strong>標籤：</strong><span>@ViewBag.QueueLabel</span></p>
                         <p><strong>名稱：</strong><span>@ViewBag.PaiName</span></p>
                         <p><strong>執行地區：</strong><span>@ViewBag.City @ViewBag.Location @ViewBag.Address</span></p>
-                        <p><strong>代排隊日期：</strong><span><br />@TempData["QueueDate"]</span></p>
-                        <p><strong>截止日期：</strong><span><br />@TempData["Deadline"]</span></p>
+                        <p><strong>代排隊日期：</strong><span><br />@ViewBag.PDD</span></p>
+                        <p><strong>截止日期：</strong><span><br />@ViewBag.PD</span></p>
                         <!-- 新增的圖片附件部分 -->
                         <p>
                             <strong>圖片附件：</strong><span id="imageAttachment">
@@ -206,19 +218,19 @@
                 DateTime DeadlineDate;
                 if (DateTime.TryParse(TempData["Deadline"]?.ToString(), out DeadlineDate))
                 {
-                    var apple = DeadlineDate.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
+                    var apple = DeadlineDate.ToString("yyyy/M/d HH:mm:ss").Replace(' ', 'T');
                     ViewBag.Apple = apple;
                 }
                 DateTime parsedDate;
                 if (DateTime.TryParse(TempData["QueueDate"]?.ToString(), out parsedDate))
                 {
-                    var Bee = parsedDate.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
+                    var Bee = parsedDate.ToString("yyyy/M/d HH:mm:ss").Replace(' ', 'T');
                     ViewBag.Bee = Bee;
                 }
                 DateTime nowdatetime;
                 if (DateTime.TryParse(DateTime.Now.ToString(), out nowdatetime))
                 {
-                    var car = nowdatetime.ToString("yyyy-MM-dd HH:mm").Replace(' ', 'T');
+                    var car = nowdatetime.ToString("yyyy/M/d HH:mm").Replace(' ', 'T');
                     ViewBag.car = car;
                 }
 

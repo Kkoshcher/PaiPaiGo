@@ -387,7 +387,7 @@ namespace paipaigo1005.Controllers {
         #endregion
 
         #region 登出功能
-        [HttpPost]
+  
         public ActionResult Logout() {
             // 清除Session
             HttpContext.Session.Remove("MemberID");

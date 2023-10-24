@@ -55,15 +55,26 @@
                 <h1 style="text-align: center;">任務確認</h1>
                 <div class="row">
                     <div class="col-md-1"></div>
-
+                    @{
+                        DateTime BuyDelivery;
+                        DateTime BuyDeadline;
+                        if (DateTime.TryParse(TempData["BuyDelivery"]?.ToString(), out BuyDelivery)) {
+                            string BDD = BuyDelivery.ToString("yyyy/M/d tt hh:mm");
+                            ViewBag.BDD = BDD;
+                        };
+                        if (DateTime.TryParse(TempData["BuyDeadline"]?.ToString(), out BuyDelivery)) {
+                            string BD = BuyDelivery.ToString("yyyy/M/d tt hh:mm");
+                            ViewBag.BD = BD;
+                        }
+                    }
                     <!-- 左側內容 -->
                     <div class="col-md-4">
                         <p><strong>任務種類：</strong><span id="taskType">購買</span></p>
                         <p><strong>標籤：</strong><span id="taskLabel">@ViewBag.BuyLabel</span></p>
                         <p><strong>名稱：</strong><span id="taskName">@ViewBag.BuyName</span></p>
                         <p><strong>執行地點：</strong><span id="taskLocation">@ViewBag.BuyLocation</span></p>
-                        <p><strong>商品交貨時間：</strong><span id="deliveryTime">@TempData["BuyDelivery"]</span></p>
-                        <p><strong>截止時間：</strong><span id="deliveryTime">@TempData["BuyDeadline"]</span></p>
+                        <p><strong>商品交貨時間：</strong><span id="deliveryTime">@ViewBag.BDD</span></p>
+                        <p><strong>截止時間：</strong><span id="deliveryTime">@ViewBag.BD</span></p>
                         <p><strong>商品交貨地址：</strong><span id="deliveryAddress">@ViewBag.BuyCity @ViewBag.BuyDistrict @ViewBag.BuyAddress</span></p>
                         <p><strong>收貨方式：</strong><span id="deliveryMethod">@ViewBag.BuyDeliveryMethod</span></p>
                         <!-- 新增的圖片附件部分 -->
@@ -211,19 +222,19 @@
                 DateTime DeliveryDate;
                 if (DateTime.TryParse(@TempData["BuyDelivery"]?.ToString(), out DeliveryDate))
                 {
-                    var apple = DeliveryDate.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
+                    var apple = DeliveryDate.ToString("yyyy/M/d HH:mm:ss").Replace(' ', 'T');
                     ViewBag.apple = apple;
                 }
                 DateTime parsedDate;
                 if (DateTime.TryParse(@TempData["BuyDeadline"]?.ToString(), out parsedDate))
                 {
-                    var Bee = parsedDate.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
+                    var Bee = parsedDate.ToString("yyyy/M/d HH:mm:ss").Replace(' ', 'T');
                     ViewBag.Bee = Bee;
                 }
                 DateTime nowdatetime;
                 if (DateTime.TryParse(DateTime.Now.ToString(), out nowdatetime))
                 {
-                    var car = nowdatetime.ToString("yyyy-MM-dd HH:mm").Replace(' ', 'T');
+                    var car = nowdatetime.ToString("yyyy/M/d HH:mm").Replace(' ', 'T');
                     ViewBag.car = car;
                 }
 
@@ -286,9 +297,6 @@
                 <input asp-for="ImagePath" class="form-control" value="@ViewBag.BuyImageData" />
                 <span asp-validation-for="ImagePath" class="text-danger"></span>
             </div>
-            @* <div class="form-group">
-            <input id="create-button" type="submit" value="Create" class="btn btn-primary" />
-            </div> *@
         </div>
     </form>
     <script>

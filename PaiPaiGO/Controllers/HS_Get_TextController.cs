@@ -179,10 +179,15 @@ namespace PaiPaiGO.Controllers
                 TempData["PaiOrderTime"] = PaiData.OrderTime;
                 TempData["PaiAcceptTime"] = PaiData.AcceptTime;
                 TempData["rePaiAcceptTime"] = DateTime.Now.ToString("yyyy/M/d HH:mm");
+                //圖片
+                byte[] imageBytes = null;
+                if (PaiData.ImagePath != null) {
+                    imageBytes = PaiData.ImagePath;
+                    HttpContext.Session.Set("Image", imageBytes);
+                }
                 byte[] storedImageBytes;
                 HttpContext.Session.TryGetValue("Image", out storedImageBytes);
-                if (storedImageBytes != null)
-                {
+                if (storedImageBytes != null) {
                     string base64Image = Convert.ToBase64String(storedImageBytes);
                     ViewBag.ImageData = "data:image/png;base64," + base64Image;
                 }
@@ -224,11 +229,16 @@ namespace PaiPaiGO.Controllers
                 TempData["BuyOrderTime"] = BuyData.OrderTime;
                 TempData["BuyAcceptTime"] = BuyData.AcceptTime;
                 TempData["reBuyAcceptTime"] = DateTime.Now.ToString("yyyy/M/d HH:mm");
-                byte[] storedImageBytes;
-                HttpContext.Session.TryGetValue("BuyImage", out storedImageBytes);
-                if (storedImageBytes != null)
-                {
-                    string base64Image = Convert.ToBase64String(storedImageBytes);
+                //圖片
+                byte[] BuyimageBytes = null;
+                if (BuyData.ImagePath != null) {
+                    BuyimageBytes = BuyData.ImagePath;
+                    HttpContext.Session.Set("BuyImage", BuyimageBytes);
+                }
+                byte[] BuystoredImageBytes;
+                HttpContext.Session.TryGetValue("BuyImage", out BuystoredImageBytes);
+                if (BuystoredImageBytes != null) {
+                    string base64Image = Convert.ToBase64String(BuystoredImageBytes);
                     ViewBag.BuyImageData = "data:image/png;base64," + base64Image;
                 }
             }

@@ -26,9 +26,12 @@ namespace PaiPaiGO.Controllers {
 
 		public async Task<IActionResult> Yu_Calendar()
 		{
-			//要帶入登入會員的ID，待現在測試中，先設001
-			//var memberID = HttpContext.Session.GetString("MemberID");
-			var memberID = "001";
+            //layout用
+            ViewBag.YU_ID = HttpContext.Session.GetString("MemberID");
+            ViewBag.YU_Name = HttpContext.Session.GetString("MemberName");
+            //要帶入登入會員的ID，待現在測試中，先設001
+            //var memberID = HttpContext.Session.GetString("MemberID");
+            var memberID = "001";
 
 
 			//行事曆
@@ -78,9 +81,12 @@ namespace PaiPaiGO.Controllers {
 		[HttpPost]
 		public ActionResult Filter_Order(string missionStatus)
 		{
-			//要帶入登入會員的ID，待現在測試中，先設001
-			//var memberID = HttpContext.Session.GetString("MemberID");
-			var memberID = "001";
+            //layout用
+            ViewBag.YU_ID = HttpContext.Session.GetString("MemberID");
+            ViewBag.YU_Name = HttpContext.Session.GetString("MemberName");
+            //要帶入登入會員的ID，待現在測試中，先設001
+            //var memberID = HttpContext.Session.GetString("MemberID");
+            var memberID = "001";
 
 			var query = _context.Missions.Include(x => x.CategoryNavigation).AsQueryable();
 			query = query.Where(m => m.OrderMemberId == memberID);
@@ -104,9 +110,12 @@ query = query.Where(m => m.MissionStatus == missionStatus|| m.MissionStatus== "�
 		[HttpPost]
 		public ActionResult Filter_Accept(string missionStatus)
 		{
-			//要帶入登入會員的ID，待現在測試中，先設001
-			//var memberID = HttpContext.Session.GetString("MemberID");
-			var memberID = "001";
+            //layout用
+            ViewBag.YU_ID = HttpContext.Session.GetString("MemberID");
+            ViewBag.YU_Name = HttpContext.Session.GetString("MemberName");
+            //要帶入登入會員的ID，待現在測試中，先設001
+            //var memberID = HttpContext.Session.GetString("MemberID");
+            var memberID = "001";
 
 			var query = _context.Missions.Include(x => x.CategoryNavigation).AsQueryable();
 			query = query.Where(m => m.AcceptMemberId == memberID);
@@ -130,7 +139,10 @@ query = query.Where(m => m.MissionStatus == missionStatus|| m.MissionStatus== "�
 		[HttpPost]
 		public IActionResult cancelMission(List<MissionStatusChangeModel> changes)
 		{
-			if (_context.Missions == null) {
+            //layout用
+            ViewBag.YU_ID = HttpContext.Session.GetString("MemberID");
+            ViewBag.YU_Name = HttpContext.Session.GetString("MemberName");
+            if (_context.Missions == null) {
 				return Problem("Entity set 'PaiPaiGoContext.Missions' is null.");
 			}
 
@@ -157,7 +169,10 @@ query = query.Where(m => m.MissionStatus == missionStatus|| m.MissionStatus== "�
 		[HttpPost]
 		public IActionResult FinishMission(List<MissionFinishModel> changes)
 		{
-			if (_context.Missions == null) {
+            //layout用
+            ViewBag.YU_ID = HttpContext.Session.GetString("MemberID");
+            ViewBag.YU_Name = HttpContext.Session.GetString("MemberName");
+            if (_context.Missions == null) {
 				return Problem("Entity set 'PaiPaiGoContext.Missions' is null.");
 			}
 
@@ -205,9 +220,12 @@ query = query.Where(m => m.MissionStatus == missionStatus|| m.MissionStatus== "�
 		//評分星星的頁面
 		public ActionResult Yu_Star(int missionId, string memberId, string othersId)
 		{
-			// 这里可以根据 missionId 和 memberId 从 A 资料表中获取相关数据
-			// 然后将数据传递给评分页面
-			ViewData["MissionId"] = missionId;
+            //layout用
+            ViewBag.YU_ID = HttpContext.Session.GetString("MemberID");
+            ViewBag.YU_Name = HttpContext.Session.GetString("MemberName");
+            // 这里可以根据 missionId 和 memberId 从 A 资料表中获取相关数据
+            // 然后将数据传递给评分页面
+            ViewData["MissionId"] = missionId;
 			ViewData["MemberId"] = memberId;
 			ViewData["OthersId"] = othersId;
 			DateTime currentTime = DateTime.Now;
@@ -223,7 +241,10 @@ query = query.Where(m => m.MissionStatus == missionStatus|| m.MissionStatus== "�
 		[HttpPost]
 		public async Task<IActionResult> Yu_Star([Bind("Ratingnumber,Type,Date,,MissionId,ReportMemberId,ReportedMemberId,Content,State,Score,Mission,ReportMember,ReportedMember")] Opinion_Star model)
 		{
-			if (ModelState.IsValid) {
+            //layout用
+            ViewBag.YU_ID = HttpContext.Session.GetString("MemberID");
+            ViewBag.YU_Name = HttpContext.Session.GetString("MemberName");
+            if (ModelState.IsValid) {
 				// 从 model 中获取评分数据，并将其保存到 B 资料表中
 				// 你可以使用 Entity Framework 或其他数据访问技术来进行数据库操作
 				// 保存成功后，重定向到之前的页面或其他适当的操作
@@ -254,9 +275,12 @@ query = query.Where(m => m.MissionStatus == missionStatus|| m.MissionStatus== "�
 		//來做檢舉頁面，應該會和星星頁面差不多(只是把星星拿掉、選項換掉，還有登進資料庫時，要把類別設定為檢舉)
 		public ActionResult Yu_Report(int missionId, string memberId, string othersId)
 		{
-			// 这里可以根据 missionId 和 memberId 从 A 资料表中获取相关数据
-			// 然后将数据传递给评分页面
-			ViewData["MissionId"] = missionId;
+            //layout用
+            ViewBag.YU_ID = HttpContext.Session.GetString("MemberID");
+            ViewBag.YU_Name = HttpContext.Session.GetString("MemberName");
+            // 这里可以根据 missionId 和 memberId 从 A 资料表中获取相关数据
+            // 然后将数据传递给评分页面
+            ViewData["MissionId"] = missionId;
 			ViewData["MemberId"] = memberId;
 			ViewData["OthersId"] = othersId;
 			DateTime currentTime = DateTime.Now;

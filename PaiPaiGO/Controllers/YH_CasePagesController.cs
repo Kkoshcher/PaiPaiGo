@@ -64,7 +64,7 @@ namespace PaiPaiGo.Controllers
             var pageNumber = page ?? 1;
             return View(await missions.ToPagedListAsync(pageNumber, 8));
         }
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> GetMissionImage(int id)
         {
 			//layout用

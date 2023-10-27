@@ -43,9 +43,9 @@
         }
 
         /* 內容字體大小為20px */
-        span {
+       /*  span {
             font-size: 20px;
-        }
+        } */
     </style>
 </head>
 <body>
@@ -216,21 +216,18 @@
             </div>
             @{
                 DateTime DeadlineDate;
-                if (DateTime.TryParse(TempData["Deadline"]?.ToString(), out DeadlineDate))
-                {
-                    var apple = DeadlineDate.ToString("yyyy/M/d HH:mm:ss").Replace(' ', 'T');
+                if (DateTime.TryParse(TempData["Deadline"]?.ToString(), out DeadlineDate)) {
+                    var apple = DeadlineDate.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
                     ViewBag.Apple = apple;
                 }
                 DateTime parsedDate;
-                if (DateTime.TryParse(TempData["QueueDate"]?.ToString(), out parsedDate))
-                {
-                    var Bee = parsedDate.ToString("yyyy/M/d HH:mm:ss").Replace(' ', 'T');
+                if (DateTime.TryParse(TempData["QueueDate"]?.ToString(), out parsedDate)) {
+                    var Bee = parsedDate.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
                     ViewBag.Bee = Bee;
                 }
                 DateTime nowdatetime;
-                if (DateTime.TryParse(DateTime.Now.ToString(), out nowdatetime))
-                {
-                    var car = nowdatetime.ToString("yyyy/M/d HH:mm").Replace(' ', 'T');
+                if (DateTime.TryParse(DateTime.Now.ToString(), out nowdatetime)) {
+                    var car = nowdatetime.ToString("yyyy-MM-dd HH:mm").Replace(' ', 'T');
                     ViewBag.car = car;
                 }
 

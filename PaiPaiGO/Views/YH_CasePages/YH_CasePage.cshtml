@@ -208,18 +208,25 @@
 				geocoder.geocode({ 'location': pos }, function (results, status) {
 					if (status === 'OK') {
 						if (results[0]) {
+							console.log("All address components:", JSON.stringify(results[0].address_components, null, 2));
+
 							var city, district;
 							for (var i = 0; i < results[0].address_components.length; i++) {
 								var component = results[0].address_components[i];
 								if (component.types.indexOf('administrative_area_level_1') !== -1) {
 									city = component.long_name;
 								}
-								if (component.types.indexOf('locality') !== -1) {
+								if (component.types.indexOf('locality') !== -1 || component.types.indexOf('administrative_area_level_2') !== -1 || component.types.indexOf('administrative_area_level_3') !== -1) {
 									district = component.long_name;
 								}
 							}
-							console.log("City and district obtained:", city, district);
-							sendLocationToServer(city, district);
+
+							if (city && district) {
+								console.log("City and district obtained:", city, district);
+								sendLocationToServer(city, district);
+							} else {
+								console.log("Missing city or district:", city, district);
+							}
 						}
 					} else {
 						console.log("Geocoding failed:", status);
@@ -235,6 +242,7 @@
 			handleLocationError(false);
 		}
 	}
+
 
 	// 處理位置錯誤並顯示彈出視窗
 	function handleLocationError(browserHasGeolocation) {
@@ -286,6 +294,8 @@
 			url: "/YH_CasePages/Map",
 			data: { city: city, district: district },
 			success: function (response) {
+				console.log("Server response:", JSON.stringify(response, null, 2));
+
 				var ordersFromServer = response.orders;
 				console.log("Detailed raw order:", JSON.stringify(ordersFromServer, null, 2));
 
@@ -294,20 +304,10 @@
 					return;
 				}
 
-				// 注意，我更改了這裡的字段名稱
-				var orders = ordersFromServer.map(function (order) {
-					if (order.locationCity && order.locationDistrict && order.address) {
-						return order.locationCity + " " + order.locationDistrict + " " + order.address;
-					}
-					return null;
-				}).filter(Boolean);  // Remove null or undefined items
-
-				console.log("Valid orders to pass for geocoding:", orders);
-				loadNearbyOrders(orders);
+				// 直接將從伺服器接收的 ordersFromServer 陣列傳遞給 loadNearbyOrders
+				loadNearbyOrders(ordersFromServer);
 			}
 		});
-
-
 	}
 
 	// 載入附近訂單的函數
@@ -322,21 +322,44 @@
 		}
 
 		for (var i = 0; i < orders.length; i++) {
-			var address = orders[i];
-			// 避免發送空或不完整的地址
-			if (address && address.trim() !== "") {
-				geocoder.geocode({ 'address': address }, function (results, status) {
-					if (status === 'OK') {
-						var marker = new google.maps.Marker({
-							position: results[0].geometry.location,
-							map: map,
-							title: results[0].formatted_address
-						});
-					} else {
-						console.log('Geocoding failed for address:', address, 'Reason:', status);
-					}
-				});
-			}
+			(function (i) {  // 使用 IIFE 來捕獲每次迭代的變數值
+				var order = orders[i];
+				var address = order.locationCity + ' ' + order.locationDistrict + ' ' + order.address;
+				var missionId = order.missionId;
+				var category = order.category;
+
+				// 避免發送空或不完整的地址
+				if (address && address.trim() !== "") {
+					geocoder.geocode({ 'address': address }, function (results, status) {
+						if (status === 'OK') {
+							var marker = new google.maps.Marker({
+								position: results[0].geometry.location,
+								map: map,
+								title: results[0].formatted_address
+							});
+
+							// 添加點擊事件
+							google.maps.event.addListener(marker, 'click', function () {
+								var targetPage = "";
+
+								// 根據 Category 決定要跳轉到哪個頁面
+								if (category === 1) {
+									targetPage = 'GetOrder_Pai';
+								} else if (category === 2) {
+									targetPage = 'GetOrder_Buy';
+								} else {
+									console.log('Unknown category:', category);
+									return; // 不進行跳轉
+								}
+
+								window.location.href = '/HS_Get_Text/' + targetPage + '/' + missionId;
+							});
+						} else {
+							console.log('Geocoding failed for address:', address, 'Reason:', status);
+						}
+					});
+				}
+			})(i);
 		}
 	}
 
@@ -439,7 +462,7 @@
 
 	// });
 
-
+	
 
  *@
 

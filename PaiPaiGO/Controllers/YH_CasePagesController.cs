@@ -146,15 +146,15 @@ namespace PaiPaiGo.Controllers
 		}
 
 
-		[HttpGet]
+		[HttpPost]
 		public IActionResult Map(string city, string district)
 		{
             //layout用
             ViewBag.YU_ID = HttpContext.Session.GetString("MemberID");
             ViewBag.YU_Name = HttpContext.Session.GetString("MemberName");
             var orders = _context.Missions
-								 .Where(o => o.LocationCity == city && o.LocationDistrict == district)
-								 .Select(o => new { o.LocationCity, o.LocationDistrict, o.Address })
+								 .Where(o => o.LocationCity == city && o.LocationDistrict == district && o.MissionStatus=="發布中")
+								 .Select(o => new { o.MissionId,o.Category,o.LocationCity, o.LocationDistrict, o.Address })
 								 .ToList();
 
 			return Json(new { orders = orders });
